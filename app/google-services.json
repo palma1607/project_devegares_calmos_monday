@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1081549647677",
+    "project_id": "aula-positivo-segunda",
+    "storage_bucket": "aula-positivo-segunda.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1081549647677:android:8f46cc29ebac4469f45f54",
+        "android_client_info": {
+          "package_name": "br.com.up.devegaresecalmos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1081549647677-o25ml7fj2od1u5ai21bbrgf01qbqs5v2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQwgZ3zqDDxGkp9w8xGITU_F4Bu0yOYFI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1081549647677-o25ml7fj2od1u5ai21bbrgf01qbqs5v2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
