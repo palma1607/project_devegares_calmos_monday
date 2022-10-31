@@ -6,5 +6,5 @@ data class Race (
     val distance:String,
     val time:Float,
     val hour:Timestamp,
-    val opponent:String
-        )
+    val opponent:String,
+    val id:String?)
