@@ -2,11 +2,15 @@ package br.com.up.devegaresecalmos
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+import br.com.up.devegaresecalmos.fragment.RegisterRaceFragment
 import br.com.up.devegaresecalmos.model.Race
 import br.com.up.devegaresecalmos.repository.RaceRepository
 import com.google.firebase.Timestamp
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -18,19 +22,9 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-
-        /*val race = Race(
-            "402",
-            10.5f,
-            Timestamp.now(),
-            "Toretto"
-        )
-
-        repository.save(
-            race
-        )*/
-
-
+        val dialogRegister = RegisterRaceFragment()
+        dialogRegister.show(supportFragmentManager,
+            "DialogRegister")
 
     }
 }

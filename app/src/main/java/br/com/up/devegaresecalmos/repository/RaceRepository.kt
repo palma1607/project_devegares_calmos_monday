@@ -7,6 +7,8 @@ import com.google.firebase.ktx.Firebase
 
 class RaceRepository private constructor(){
 
+    private val collectionPath = "corridas"
+
     companion object{
         private var repository:RaceRepository? = null
 
@@ -20,14 +22,13 @@ class RaceRepository private constructor(){
 
     fun save(race:Race){
         val database = Firebase.firestore
-        database.collection("corridas")
+        database.collection(collectionPath)
             .add(race)
     }
 
     fun delete(race:Race){
-
         val database = Firebase.firestore
-        database.collection("corridas")
+        database.collection(collectionPath)
             .document(race.id!!)
             .delete()
     }
@@ -35,7 +36,7 @@ class RaceRepository private constructor(){
     fun getAll(callback:(List<Race>) -> Unit){
 
         val database = Firebase.firestore
-        database.collection("corridas")
+        database.collection(collectionPath)
             .get()
             .addOnSuccessListener { documents ->
                 val races = arrayListOf<Race>()
@@ -53,15 +54,31 @@ class RaceRepository private constructor(){
             }
     }
 
-    /*fun getById(id:String): Race{
+    fun getById(id:String, listener: (Race) -> Unit){
+        val database = Firebase.firestore
+        database.collection(collectionPath)
+            .document(id).get().addOnSuccessListener{ document ->
 
-    }*/
+                val race = Race(
+                    id = document.id,
+                    opponent = document.get("opponent").toString(),
+                    time = document.getDouble("time")!!.toFloat(),
+                    hour = document.getTimestamp("hour")!!,
+                    distance =  document.get("distance").toString()
+                )
+                listener(race)
+            }
+    }
 
     fun update(id:String, race: Race){
-        /*val database = Firebase.firestore
-        database.collection("corridas")
+        val database = Firebase.firestore
+        val document = database.collection(collectionPath)
             .document(id)
-            .update(race)*/
+
+        document.update("opponent",race.opponent)
+        document.update("time",race.time)
+        document.update("hour",race.hour)
+        document.update("distance",race.distance)
     }
 
 }
